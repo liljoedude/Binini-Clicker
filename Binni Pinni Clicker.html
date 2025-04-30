@@ -1,0 +1,62 @@
+<button style="
+background-image: url('Music.png');
+width: 50px;
+height: 70px;
+border: 1px soild white;
+" onclick="Music();"></button>
+<div style="
+display: flex;
+justify-content: center;
+">
+<button style="
+width: 38%;
+height: 38%;
+" onclick="yee();">
+<img src="ban.jpg" />
+</button>
+</div>
+<div style="
+display: flex;
+justify-content: center;
+">
+<p id="text1">Slap the binini</p>
+</div>
+<div style="
+display: flex;
+justify-content: center;
+">
+<p id="text2">Bininis per click: 1</p>
+</div>
+<script>
+const elem1 = document.getElementById("text1");
+const elem2 = document.getElementById("text2");
+const click = new Audio("click.mp3");
+const bgm = new Audio("winstonsong.mp3");
+let banis = 0;
+let banpow = 1;
+function yee() {
+banis += banpow;
+click.play();
+elem1.innerHTML = "you have: " + banis + " baninis";
+}
+function Music() {
+bgm.play();
+bgm.loop = true;
+}
+function bpc(add, cost) {
+if(banis > (cost - 1)) {
+banis -= cost;
+banpow += add;
+elem1.innerHTML = "you have: " + banis + " baninis";
+elem2.innerHTML = "Bininis per click: " + banpow;
+click.play();
+}
+}
+</script>
+<button style="
+width: 200px;
+height: 200px;
+" onclick="bpc(5, 50);">
+Upgrade: +5 to bininis per click
+Cost: 50
+</button>
